@@ -6,13 +6,16 @@
   "scripts": {
     "start": "webpack serve --open",
     "dev": "webpack",
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack",
+    "eslint:check": "eslint src --ext .jsx --ext .js",
+    "eslint:fix": "eslint src --ext .jsx --ext .js --fix",
+    "prettier:check": "prettier --check \"src/**/*.{js,jsx,scss}\"",
+    "prettier:fix": "prettier --write \"src/**/*.{js,jsx,scss}\"",
+    "stylelint:check": "stylelint \"src/**/*.scss\"",
+    "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
+    "prepare": "husky install",
+    "precommit": "lint-staged"
   },
-  "browserslist": [
-    "last 2 versions",
-    "> 1%",
-    "IE 10"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,16 +31,124 @@
     "babel-loader": "^8.2.3",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
     "mini-css-extract-plugin": "^2.5.2",
     "postcss": "^8.4.5",
     "postcss-loader": "^6.2.1",
     "postcss-preset-env": "^7.2.3",
+    "prettier": "^2.5.1",
     "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",
+    "stylelint": "^14.3.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-order": "^5.0.0",
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.3"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "IE 10"
+  ],
+  "eslintConfig": {
+    "plugins": [
+      "import",
+      "jsx-a11y",
+      "react",
+      "react-hooks"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "airbnb",
+      "prettier"
+    ],
+    "rules": {
+      "arrow-parens": 2,
+      "import/prefer-default-export": 0,
+      "import/no-default-export": 2,
+      "react/function-component-definition": [
+        2,
+        {
+          "namedComponents": "arrow-function",
+          "unnamedComponents": "arrow-function"
+        }
+      ],
+      "brace-style": [
+        2,
+        "1tbs"
+      ],
+      "curly": [
+        2,
+        "all"
+      ],
+      "dot-location": [
+        2,
+        "property"
+      ],
+      "eol-last": 2,
+      "jsx-quotes": [
+        2,
+        "prefer-double"
+      ],
+      "keyword-spacing": [
+        2,
+        {
+          "after": true,
+          "before": true
+        }
+      ],
+      "max-len": 2,
+      "space-before-blocks": 2,
+      "no-lonely-if": 2,
+      "no-trailing-spaces": 2,
+      "no-multi-spaces": 2,
+      "no-undef": 0,
+      "no-multiple-empty-lines": [
+        2,
+        {
+          "max": 1
+        }
+      ],
+      "indent": [
+        2,
+        2
+      ],
+      "semi": 2,
+      "react/react-in-jsx-scope": 0
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": [
+            "src"
+          ]
+        }
+      }
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint",
+      "prettier --check"
+    ],
+    "*.json": [
+      "prettier --check"
+    ],
+    "*.css": [
+      "stylelint"
+    ]
   }
 }
