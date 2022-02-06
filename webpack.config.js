@@ -1,24 +1,24 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-let mode = "development";
+let mode = 'development';
 
-if (process.env.NODE_ENV === "production") {
-  mode = "production";
+if (process.env.NODE_ENV === 'production') {
+  mode = 'production';
 }
 
 module.exports = {
-  mode: mode,
-  devtool: "source-map",
+  mode,
+  devtool: 'source-map',
   output: {
-    assetModuleFilename: "assets/[hash][ext][query]",
+    assetModuleFilename: 'assets/[hash][ext][query]',
     clean: true,
   },
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "index.html"),
+      template: path.join(__dirname, 'src', 'index.html'),
     }),
   ],
   module: {
@@ -27,20 +27,20 @@ module.exports = {
         test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader",
-          "postcss-loader",
+          'css-loader',
+          'sass-loader',
+          'postcss-loader',
         ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
       },
     ],

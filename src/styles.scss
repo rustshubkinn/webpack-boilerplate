@@ -3,32 +3,38 @@ $titles-color: #099210;
 
 * {
   h5 {
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
 }
 
 button {
+  margin: 0 10px;
+
   color: $button-color;
-  font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
-  margin: 0 10px;
+  font-family: inherit;
+
   background: none;
-  border: none;
+  border: 0;
 }
 
 .container {
-  text-align: center;
-  background: linear-gradient(to top, white, black);
   font-size: 32px;
+  text-align: center;
+
+  background: linear-gradient(to top, #fff, #000);
+
   h5 {
+    display: block;
+    height: 270px;
     padding-top: 35px;
+
     color: $titles-color;
-    background: url("./img/cat.jpeg");
+
+    background: url('./img/cat.jpeg');
     background-repeat: no-repeat;
     background-position: bottom;
-    height: 270px;
-    display: block;
   }
 }
