@@ -10,6 +10,9 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   mode,
+  resolve: {
+    extensions: ['.js', '.jsx', '.tsx'],
+  },
   devtool: 'source-map',
   output: {
     assetModuleFilename: 'assets/[hash][ext][query]',
