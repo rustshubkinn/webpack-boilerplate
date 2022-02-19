@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { VFC } from 'react';
 
 import './styles.scss';
 
@@ -7,7 +7,7 @@ interface AppProps {
   href: string;
 }
 
-export const App: React.VFC<AppProps> = ({ title, href }) => (
+export const App: VFC<AppProps> = ({ title, href }: AppProps) => (
   <div className="container">
     <h5>
       This is {title} and when you click

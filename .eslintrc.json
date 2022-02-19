@@ -1,10 +1,28 @@
 {
-  "plugins": ["import", "jsx-a11y", "react", "react-hooks"],
-  "extends": ["eslint:recommended", "airbnb", "prettier"],
+  "plugins": [
+    "import",
+    "jsx-a11y",
+    "react",
+    "react-hooks",
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "airbnb",
+    "prettier",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   "rules": {
+    "react/jsx-uses-react": 0,
+    "react/prop-types": 0,
     "arrow-parens": 2,
     "import/prefer-default-export": 0,
     "import/no-default-export": 2,
+    "react/jsx-filename-extension": 0,
     "react/function-component-definition": [
       2,
       {
@@ -38,12 +56,24 @@
     ],
     "indent": [2, 2],
     "semi": 2,
-    "react/react-in-jsx-scope": 0
+    "react/react-in-jsx-scope": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["src"]
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   }
